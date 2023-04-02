@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>SecretScanta</title>
+		<meta charset="utf-8">
+		
+		<style>
+			body {
+			  padding: 25px;
+			  background-color: white;
+			  color: black;
+			  font-size: 25px;
+			}
+
+			@media (prefers-color-scheme: dark) {
+				body {
+				  background-color: black;
+				  color: white;
+				}
+			}
+		</style>		
+	</head>
+	
+	<body>
+	
+		<div class="message">
+		Secret Message will be here!
+		</div>
+
+		<script>
+			/* 
+				This script section must be after the `message` class DOM item is created.
+				Otherwise the onLoad() method will not find the element to update based on 
+				the parameters passed in via the URL parameters.
+			*/
+			
+			function updateMessage(message) {
+				const domItem = document.querySelector('.message');
+				if (domItem != null) {
+					domItem.innerHTML = "🎁 " + message + " 🎁";
+				}
+                console.log(message);
+			}
+
+			function updateTarget(target) {
+				updateMessage( "You are buying for " + target + "." );
+			}
+
+			function onLoad() {
+				// using the current page's URL
+				const myUrl = new URL(window.location.toLocaleString());
+				const urlParams = myUrl.searchParams;
+				
+				if (urlParams.has('message')) {
+					const message = urlParams.get('message');
+					updateMessage(message);
+				}
+				else if (urlParams.has('target')) {
+					const target = urlParams.get('target');
+					updateTarget(target);
+				}
+				else {
+					/* When no parameters are provided, let's provide something silly. */
+                    const message = "<p>Hi there!</p><p>Nothing to see here.  Move along.</p>"
+                    updateMessage( message )
+                }			
+			}	
+			
+			window.onload = onLoad();
+		</script>
+		
+	</body>
+	
+</html>
+
+
