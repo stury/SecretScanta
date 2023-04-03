@@ -4,12 +4,18 @@
 		<title>SecretScanta</title>
 		<meta charset="utf-8">
 		
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=10,user-scalable=yes">
+				
 		<style>
 			body {
 			  padding: 25px;
 			  background-color: white;
 			  color: black;
-			  font-size: 25px;
+			  font-size: 2em;
+			}
+
+			.center {
+				text-align:center;
 			}
 
 			@media (prefers-color-scheme: dark) {
@@ -23,9 +29,13 @@
 	
 	<body>
 	
-		<div class="message">
-		Secret Message will be here!
+		<div class="center">🎁</div>
+		<hr/>
+		<div class="message center">
+		If you see this Secret Message, something is wrong!
 		</div>
+		<hr/>
+		<div class="center">🎅🏻</div>
 
 		<script>
 			/* 
@@ -37,7 +47,7 @@
 			function updateMessage(message) {
 				const domItem = document.querySelector('.message');
 				if (domItem != null) {
-					domItem.innerHTML = "🎁 " + message + " 🎁";
+					domItem.innerHTML = message;
 				}
                 console.log(message);
 			}
