@@ -12,7 +12,8 @@ struct QRCodeGenerator {
         case high = "H"     // 30%
     }
     
-    // good tutorial on creating QR Codes:  https://medium.com/@MedvedevTheDev/generating-basic-qr-codes-in-swift-63d7222aa011
+    // good tutorial on creating QR Codes:  
+    // https://medium.com/@MedvedevTheDev/generating-basic-qr-codes-in-swift-63d7222aa011
     // https://digitalbunker.dev/native-barcode-qr-code-generation-in-swift/
     
     private func convertCIImageToCGImage(inputImage: CIImage) -> CGImage? {

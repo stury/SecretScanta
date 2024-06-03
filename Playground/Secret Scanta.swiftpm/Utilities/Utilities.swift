@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 let dataKey = "secretSanta"
 
@@ -22,7 +22,7 @@ func jsonData(_ items: [SecretSantaItem]) -> Data? {
     return result
 }
 
-func qrItems() -> [SecretSantaItem] {
+func qrItems(_ participants: [String] ) -> [SecretSantaItem] {
     var result = [SecretSantaItem]()
     
     let userDefaultsHelper = UserDefaultsHelper()
@@ -37,10 +37,7 @@ func qrItems() -> [SecretSantaItem] {
     
     if result.count == 0 {
         // Generate new data...
-     //   result.append(contentsOf: SecretSantaParticipants(participants: QRSecretSanta.adults).shuffledItems)
-     //   result.append(contentsOf: SecretSantaParticipants(participants: QRSecretSanta.cousins).shuffledItems)
-        
-        result.append(contentsOf: SecretSantaParticipants(participants: QRSecretSanta.family).shuffledItems)
+        result.append(contentsOf: SecretSantaParticipants(participants: participants).shuffledItems)
         print( "Generating new content.")
         
         print("total items: \(result.count)")
@@ -51,4 +48,20 @@ func qrItems() -> [SecretSantaItem] {
         }
     }
     return result
+}
+
+func qrItems(_ participants: [Participant]) -> [SecretSantaItem] {
+    // Convert the participants to just strings, then pass to the functino to shuffle them.
+    var plainParticipants = [String]()
+    for participant in participants {
+        plainParticipants.append(participant.name)
+    }    
+    return qrItems(plainParticipants)
+}
+
+func qrItems() -> [SecretSantaItem] {
+    // Generate new data...
+//    return qrItems(QRSecretSanta.adults)
+//    return qrItems(QRSecretSanta.cousins)
+    return qrItems(QRSecretSanta.family)
 }

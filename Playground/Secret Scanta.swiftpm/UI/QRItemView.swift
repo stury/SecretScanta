@@ -5,6 +5,7 @@ struct QRItemView : View {
     
     var body: some View {
         HStack {
+            Spacer()
             //Rectangle()
             VStack {
                 Spacer(minLength: 25)
@@ -18,6 +19,7 @@ struct QRItemView : View {
                 Spacer(minLength: 25)
             }
             .foregroundColor(.blue)
+            Spacer()
             //Rectangle()
         }
     }

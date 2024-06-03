@@ -1,4 +1,4 @@
-import SwiftUI
+import Foundation
 
 struct UserDefaultsHelper {
     let defaults = UserDefaults.standard
